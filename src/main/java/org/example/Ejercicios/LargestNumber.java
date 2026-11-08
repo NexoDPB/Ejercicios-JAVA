@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Ejercicios;
 
 public class LargestNumber {
     public static int largest (int a, int b, int c) {

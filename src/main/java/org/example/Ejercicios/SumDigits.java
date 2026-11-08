@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Ejercicios;
 
 public class SumDigits {
     public static int sumOfDigits (int number) {

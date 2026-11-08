@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Ejercicios;
 
 public class NumReverse {
     public static int reverseNumber (int number) {

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Ejercicios;
 
 public class SecondLargest {
     public static Integer secondLargestNumber (int[] number) {

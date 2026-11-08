@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Ejercicios;
 import java.util.Arrays;
 
 public class Duplicates {

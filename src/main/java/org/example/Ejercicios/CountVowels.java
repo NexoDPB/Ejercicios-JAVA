@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Ejercicios;
 
 public class CountVowels {
     public static int countVowels (String text) {
