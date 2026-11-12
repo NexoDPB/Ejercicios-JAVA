@@ -2,7 +2,6 @@ package org.example.POO.banking.model.account;
 
 import org.example.POO.banking.model.Customer;
 import org.example.POO.banking.model.transaction.AccountType;
-
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -33,10 +32,12 @@ public abstract class BankAccount {
     public abstract boolean canWithdraw (BigDecimal amount);
     public abstract AccountType getAccountType();
     protected void validateNonNegative (BigDecimal amount) {
-        if (amount == null || amount.compareTo(BigDecimal.ZERO) < 0) throw new IllegalArgumentException("Amount must be positive");
+        if (amount == null || amount.compareTo(BigDecimal.ZERO) < 0)
+            throw new IllegalArgumentException("Amount must be positive");
     }
     protected void validatePositive (BigDecimal amount) {
-        if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) throw new IllegalArgumentException("Amount cannot be positive");
+        if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0)
+            throw new IllegalArgumentException("Amount cannot be positive");
     }
 
     public String getAccountNumber() {
