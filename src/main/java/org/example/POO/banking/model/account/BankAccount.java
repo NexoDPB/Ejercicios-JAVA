@@ -12,13 +12,18 @@ public abstract class BankAccount {
     private BigDecimal balance;
 
     protected BankAccount (String accountNumber, Customer owner, BigDecimal initialBalance) {
-        if (accountNumber == null || accountNumber.isBlank()) throw new IllegalArgumentException("Invalid account number");
+        if (accountNumber == null || accountNumber.isBlank())
+            throw new IllegalArgumentException("Invalid account number");
         this.accountNumber = accountNumber;
         this.owner = Objects.requireNonNull(owner);
         this.initialBalance = Objects.requireNonNull(initialBalance);
         validateNonNegative(initialBalance);
         this.balance = initialBalance;
     }
+
+    public abstract boolean canWithdraw (BigDecimal amount);
+    public abstract AccountType getAccountType();
+
     public void deposit (BigDecimal amount) {
         validatePositive(amount);
         balance = balance.add(amount);
@@ -29,15 +34,13 @@ public abstract class BankAccount {
         balance = balance.subtract(amount);
         return true;
     }
-    public abstract boolean canWithdraw (BigDecimal amount);
-    public abstract AccountType getAccountType();
     protected void validateNonNegative (BigDecimal amount) {
         if (amount == null || amount.compareTo(BigDecimal.ZERO) < 0)
-            throw new IllegalArgumentException("Amount must be positive");
+            throw new IllegalArgumentException("Amount cannot be negative");
     }
     protected void validatePositive (BigDecimal amount) {
         if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0)
-            throw new IllegalArgumentException("Amount cannot be positive");
+            throw new IllegalArgumentException("Amount must be greater than zero");
     }
 
     public String getAccountNumber() {

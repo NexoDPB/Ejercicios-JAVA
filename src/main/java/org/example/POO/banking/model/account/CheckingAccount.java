@@ -15,6 +15,7 @@ public class CheckingAccount extends BankAccount {
         this.overdraftLimit = overdraftLimit;
         this.maintenanceFee = maintenanceFee;
     }
+
     @Override
     public boolean canWithdraw(BigDecimal amount) {
         if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0)
@@ -22,16 +23,17 @@ public class CheckingAccount extends BankAccount {
         BigDecimal resultingBalance = getBalance().subtract(amount);
         return resultingBalance.compareTo(overdraftLimit.negate()) >= 0;
     }
-    public BigDecimal getAvailableBalance() {
-        return getBalance().add(overdraftLimit);
-    }
-    public void applyMaintenanceFee() {
-        if (maintenanceFee.compareTo(BigDecimal.ZERO) == 0) return;
-        withdraw(maintenanceFee);
-    }
     @Override
     public AccountType getAccountType() {
         return AccountType.CHECKING;
+    }
+
+    public BigDecimal getAvailableBalance() {
+        return getBalance().add(overdraftLimit);
+    }
+    public boolean applyMaintenanceFee() {
+        if (maintenanceFee.compareTo(BigDecimal.ZERO) == 0) return true;
+        return withdraw(maintenanceFee);
     }
     public BigDecimal getMaintenanceFee() {
         return maintenanceFee;
