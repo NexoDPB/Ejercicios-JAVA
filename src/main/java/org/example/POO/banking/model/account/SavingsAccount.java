@@ -1,7 +1,7 @@
 package org.example.POO.banking.model.account;
 
 import org.example.POO.banking.model.Customer;
-import org.example.POO.banking.model.transaction.AccountType;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
